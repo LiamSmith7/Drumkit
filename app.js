@@ -48,6 +48,34 @@ selectedVolume.value = 100;
 selectedPlayback.value = 100;
 
 // ========================================================================== //
+// Loops
+// ========================================================================== //
+
+let loop = null;
+let illumination = 255;
+
+let changeBackground  = function(){
+    illumination += 2;
+    if(illumination >= 255){
+        clearInterval(loop);
+        loop = null;
+    }
+    document.body.style.backgroundColor = "rgb(255 ," + illumination +", "+ illumination + ")";
+}
+
+let illuminate = function(){
+    if(illumination >= 230)
+        illumination = 200;
+    else
+        illumination -= 20;
+    
+    illumination = Math.max(illumination, 0);
+    if(loop == null){
+        loop = setInterval(changeBackground, 20);
+    }
+}
+
+// ========================================================================== //
 // Keypresses
 // ========================================================================== //
 
@@ -60,7 +88,8 @@ document.addEventListener("keydown", (e) => {
         audio[e.code].pressed = true;
         audio[e.code].h1.style.color = "red";
         audio[e.code].h2.style.color = "red";
-    }   
+        illuminate();
+    }  
 });
 
 document.addEventListener("keyup", (e) => {
