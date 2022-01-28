@@ -86,17 +86,61 @@ document.addEventListener("keydown", (e) => {
         audio[e.code].sound.playbackRate = playback;
         audio[e.code].sound.play();
         audio[e.code].pressed = true;
-        audio[e.code].h1.style.color = "red";
-        audio[e.code].h2.style.color = "red";
+        audio[e.code].h1.style.color = "white";
+        audio[e.code].h2.style.color = "white";
         illuminate();
+        anime({
+            targets: [audio[e.code].h1, audio[e.code].h2],
+            translateY: -15,
+            duration: 250
+        });
     }  
 });
+
 
 document.addEventListener("keyup", (e) => {
     if(audio[e.code] != null){
         audio[e.code].pressed = false;
         audio[e.code].h1.style.color = "black";
         audio[e.code].h2.style.color = "black";
+        anime({
+            targets: [audio[e.code].h1, audio[e.code].h2],
+            translateY: 0,
+            duration: 250
+        });
     }   
 });
+
+// ========================================================================== //
+// Animations on page load
+// ========================================================================== //
+
+let settings = document.getElementById("settings");
+
+// Instantly hide the elements on load
+anime({
+    targets: '#buttons div',
+    translateY: -500,
+    duration: 0
+});
+anime({
+    targets: settings,
+    translateX: 0 - settings.clientWidth,
+    duration: 0
+});
+console.log(settings.style.width);
+
+// Put the elements
+anime({
+    targets: '#buttons div',
+    translateY: 0,
+    delay: anime.stagger(100)
+});
+anime({
+    targets: settings,
+    translateX: 0,
+    duration: 1000,
+    easing: 'cubicBezier(.5, .05, .1, .3)'
+});
+
 

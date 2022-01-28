@@ -21,6 +21,7 @@
 
 h1, h2{
     text-align: center;
+    -webkit-text-stroke: 1px black;
 }
 
 #settings{
@@ -39,6 +40,6 @@ h1, h2{
     align-content: center;
 }
 
-h4{
-    font-size: 100px;
+h3{
+
 }
