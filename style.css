@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+}
+
+#flex_container {
+    padding: 3%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#buttons{
+    width: 100%;
+    margin: 10vh auto;
+    display: flex;
+}
+
+.button {
+    flex: 1;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+#settings{
+    width: 10%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#drums{
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+}
+
+h4{
+    font-size: 100px;
+}
